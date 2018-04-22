@@ -15,7 +15,12 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('area_id')->unsigned(); #Eixo tecnológico
+            $table->foreign('area_id')->references('id')->on('areas') ;
+            $table->string('name', 150)->unique();
+            $table->integer('qtSem');
+            $table->integer('chCourse');
+            $table->string('modality');
         });
     }
 

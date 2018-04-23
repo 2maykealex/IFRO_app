@@ -4,16 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Area;
 
 class AreaController extends Controller
 {
-    public function courses(){
+    public function coursesArea(){
         $area = Area::find(1);
 
-        echo $area->descricao.'<br>';
-        
-        dd($area->courses[0]->name);
+        echo $area->description.'<br> <hr>';
 
-        dd($area);
+        $cursos = $area->courses;
+
+        // dd($cursos);
+
+        foreach ($cursos as $curso){
+            echo ' - '.$curso->name.'<br>';
+        }
+        
+        // dd($area->courses[0]->name);
+
+        // dd($area);
     }
 }

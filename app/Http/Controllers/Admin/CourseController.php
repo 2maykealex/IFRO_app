@@ -10,11 +10,15 @@ use App\Models\Area;
 class CourseController extends Controller
 {
     public function areaCurso(){
-        $course = Course::find(2); #criar uma função que retorne um curso
+        $course = Course::find(1); #criar uma função que retorne um curso
 
-        echo $course->name.'<br>';
+        echo $course->name.'<br><hr>';
 
-        dd($course->area);
+        $areaId = $course->area_id;
+
+        $area = Area::where('id', $areaId)->get()->first();
+
+        echo $area->description;
         
     }
 }
